@@ -49,7 +49,7 @@ export default function ProfilePage() {
         <h1 style={{ marginBottom: 'var(--space-2xl)' }}>My Account</h1>
 
         <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: 'var(--space-2xl)', alignItems: 'start' }}>
-          {/* Sidebar */}
+          {}
           <div className="card" style={{ padding: 'var(--space-md)' }}>
             <button
               onClick={() => setActiveTab('profile')}
@@ -67,7 +67,7 @@ export default function ProfilePage() {
             </button>
           </div>
 
-          {/* Content */}
+          {}
           <div className="card">
             {activeTab === 'profile' && (
               <form onSubmit={handleProfileUpdate}>

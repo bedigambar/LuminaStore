@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import toast from 'react-hot-toast';
 
-const [cartOpen, setCartOpen] = [null, null]; // placeholder managed in CartContext
+const [cartOpen, setCartOpen] = [null, null]; 
 
 export default function Navbar() {
   const { isAuthenticated, user, logout } = useAuth();
@@ -39,7 +39,7 @@ export default function Navbar() {
       style={{ borderBottom: scrolled ? '1px solid var(--border)' : 'none' }}
     >
       <div className="container navbar-inner">
-        {/* Logo */}
+        {}
         <Link to="/" className="nav-logo" id="nav-logo">
           <div style={{
             width: 32, height: 32,
@@ -52,7 +52,7 @@ export default function Navbar() {
           <span className="gradient-text">LuminaStore</span>
         </Link>
 
-        {/* Desktop Nav */}
+        {}
         <ul className="nav-links">
           <li><NavLink to="/" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} end>Home</NavLink></li>
           <li><NavLink to="/products" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>Shop</NavLink></li>
@@ -64,9 +64,9 @@ export default function Navbar() {
           )}
         </ul>
 
-        {/* Actions */}
+        {}
         <div className="nav-actions">
-          {/* Cart */}
+          {}
           <button id="open-cart-btn" className="cart-btn" onClick={openCart} aria-label="Open cart">
             <ShoppingCart size={20} />
             {totalItems > 0 && (
@@ -74,7 +74,7 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* Auth */}
+          {}
           {isAuthenticated ? (
             <div style={{ position: 'relative' }}>
               <button

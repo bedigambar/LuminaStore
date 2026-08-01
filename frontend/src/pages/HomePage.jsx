@@ -37,7 +37,7 @@ export default function HomePage() {
       const { data } = await API.get('/products?featured=true&limit=8');
       setFeatured(data.products || []);
     } catch {
-      // Show demo cards if API not connected
+      
       setFeatured([]);
     } finally {
       setLoading(false);
@@ -46,7 +46,7 @@ export default function HomePage() {
 
   return (
     <div className="page-content">
-      {/* ── Hero ── */}
+      {}
       <section className="hero">
         <div className="hero-bg" />
         <div className="hero-grid-bg" />
@@ -98,7 +98,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Features ── */}
+      {}
       <section style={{ padding: 'var(--space-2xl) 0', background: 'var(--bg-surface)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--space-lg)' }}>
@@ -122,7 +122,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Categories ── */}
+      {}
       <section className="section" id="categories-section">
         <div className="container">
           <h2 className="section-title">Shop by Category</h2>
@@ -143,7 +143,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Featured Products ── */}
+      {}
       <section className="section" id="featured-section" style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 'var(--space-2xl)' }}>
@@ -184,7 +184,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Testimonials ── */}
+      {}
       <section className="section">
         <div className="container">
           <h2 className="section-title text-center">What Customers Say</h2>
@@ -214,7 +214,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CTA Banner ── */}
+      {}
       <section style={{ padding: 'var(--space-3xl) 0', background: 'linear-gradient(135deg, rgba(108,99,255,0.15), rgba(255,107,107,0.1))', borderTop: '1px solid var(--border)' }}>
         <div className="container text-center">
           <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', marginBottom: 'var(--space-md)' }}>
@@ -234,7 +234,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
+      {}
       <footer style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--border)', padding: 'var(--space-2xl) 0' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--space-2xl)', marginBottom: 'var(--space-2xl)' }}>

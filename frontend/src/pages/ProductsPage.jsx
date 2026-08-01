@@ -22,7 +22,7 @@ export default function ProductsPage() {
   const [total, setTotal] = useState(0);
   const [showFilters, setShowFilters] = useState(false);
 
-  // Filter state
+  
   const [search, setSearch] = useState(searchParams.get('search') || '');
   const [category, setCategory] = useState(searchParams.get('category') || '');
   const [sort, setSort] = useState('newest');
@@ -77,7 +77,7 @@ export default function ProductsPage() {
   return (
     <div className="page-content" style={{ paddingTop: 'calc(var(--navbar-h) + var(--space-2xl))' }}>
       <div className="container">
-        {/* Header */}
+        {}
         <div style={{ marginBottom: 'var(--space-2xl)' }}>
           <h1 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', marginBottom: 6 }}>All Products</h1>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>
@@ -85,7 +85,7 @@ export default function ProductsPage() {
           </p>
         </div>
 
-        {/* Search + Sort bar */}
+        {}
         <div style={{ display: 'flex', gap: 'var(--space-md)', marginBottom: 'var(--space-xl)', flexWrap: 'wrap' }}>
           <form onSubmit={handleSearch} style={{ flex: 1, minWidth: 200 }}>
             <div className="search-bar">
@@ -133,11 +133,11 @@ export default function ProductsPage() {
         </div>
 
         <div style={{ display: 'flex', gap: 'var(--space-xl)', alignItems: 'flex-start' }}>
-          {/* Filters Sidebar */}
+          {}
           {showFilters && (
             <aside className="filter-sidebar animate-slideInLeft">
               <div className="card">
-                {/* Categories */}
+                {}
                 <div className="filter-section">
                   <p className="filter-title">Category</p>
                   <label className="filter-checkbox">
@@ -180,7 +180,7 @@ export default function ProductsPage() {
                   </button>
                 </div>
 
-                {/* Min Rating */}
+                {}
                 <div className="filter-section" style={{ borderBottom: 'none' }}>
                   <p className="filter-title">Min Rating</p>
                   {[4, 3, 2, 1].map((r) => (
@@ -246,7 +246,7 @@ export default function ProductsPage() {
                   {products.map((p) => <ProductCard key={p._id} product={p} />)}
                 </div>
 
-                {/* Pagination */}
+                {}
                 {totalPages > 1 && (
                   <div className="pagination">
                     <button

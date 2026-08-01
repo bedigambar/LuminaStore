@@ -2,15 +2,15 @@ const asyncHandler = require('express-async-handler');
 const Product = require('../models/Product');
 const { cloudinary } = require('../middleware/upload');
 
-// @desc   Get all products
-// @route  GET /api/products
-// @access Public
+
+
+
 const getProducts = asyncHandler(async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 12;
   const skip = (page - 1) * limit;
 
-  // Build filter
+  
   const filter = { isActive: true };
 
   if (req.query.category) filter.category = req.query.category;
@@ -31,7 +31,7 @@ const getProducts = asyncHandler(async (req, res) => {
     filter.$text = { $search: req.query.search };
   }
 
-  // Build sort
+  
   let sortBy = {};
   switch (req.query.sort) {
     case 'price_asc': sortBy = { price: 1 }; break;
@@ -54,9 +54,9 @@ const getProducts = asyncHandler(async (req, res) => {
   });
 });
 
-// @desc   Get single product
-// @route  GET /api/products/:id
-// @access Public
+
+
+
 const getProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id).populate('reviews.user', 'name avatar');
 
@@ -68,9 +68,9 @@ const getProduct = asyncHandler(async (req, res) => {
   res.json({ success: true, product });
 });
 
-// @desc   Create product
-// @route  POST /api/products
-// @access Admin
+
+
+
 const createProduct = asyncHandler(async (req, res) => {
   const {
     name, description, price, comparePrice,
@@ -91,9 +91,9 @@ const createProduct = asyncHandler(async (req, res) => {
   res.status(201).json({ success: true, product });
 });
 
-// @desc   Update product
-// @route  PUT /api/products/:id
-// @access Admin
+
+
+
 const updateProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
@@ -107,7 +107,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     category, brand, stock, featured, tags, isActive,
   } = req.body;
 
-  // If new images uploaded, add to existing
+  
   if (req.files && req.files.length > 0) {
     const newImages = req.files.map((f) => ({ url: f.path, public_id: f.filename }));
     product.images.push(...newImages);
@@ -128,9 +128,9 @@ const updateProduct = asyncHandler(async (req, res) => {
   res.json({ success: true, product: updated });
 });
 
-// @desc   Delete product
-// @route  DELETE /api/products/:id
-// @access Admin
+
+
+
 const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
@@ -139,7 +139,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
     throw new Error('Product not found');
   }
 
-  // Delete images from Cloudinary
+  
   for (const img of product.images) {
     if (img.public_id) {
       await cloudinary.uploader.destroy(img.public_id);
@@ -150,9 +150,9 @@ const deleteProduct = asyncHandler(async (req, res) => {
   res.json({ success: true, message: 'Product deleted' });
 });
 
-// @desc   Delete product image
-// @route  DELETE /api/products/:id/images/:publicId
-// @access Admin
+
+
+
 const deleteProductImage = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
   if (!product) { res.status(404); throw new Error('Product not found'); }
@@ -164,9 +164,9 @@ const deleteProductImage = asyncHandler(async (req, res) => {
   res.json({ success: true, product });
 });
 
-// @desc   Add review
-// @route  POST /api/products/:id/reviews
-// @access Private
+
+
+
 const addReview = asyncHandler(async (req, res) => {
   const { rating, comment } = req.body;
   const product = await Product.findById(req.params.id);
@@ -176,7 +176,7 @@ const addReview = asyncHandler(async (req, res) => {
     throw new Error('Product not found');
   }
 
-  // Check if already reviewed
+  
   const alreadyReviewed = product.reviews.find(
     (r) => r.user.toString() === req.user._id.toString()
   );
@@ -198,9 +198,9 @@ const addReview = asyncHandler(async (req, res) => {
   res.status(201).json({ success: true, message: 'Review added' });
 });
 
-// @desc   Get admin products (all, including inactive)
-// @route  GET /api/products/admin
-// @access Admin
+
+
+
 const getAdminProducts = asyncHandler(async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 20;

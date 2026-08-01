@@ -25,7 +25,7 @@ const authReducer = (state, action) => {
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  // On mount: check stored token and fetch user
+  
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
     if (token) {

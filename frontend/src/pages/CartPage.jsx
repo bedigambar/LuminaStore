@@ -45,7 +45,7 @@ export default function CartPage() {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: 'var(--space-2xl)', alignItems: 'start' }}>
-          {/* Cart Items */}
+          {}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
             {items.map((item, i) => (
               <div
@@ -98,7 +98,7 @@ export default function CartPage() {
             ))}
           </div>
 
-          {/* Order Summary */}
+          {}
           <div className="card" style={{ position: 'sticky', top: 'calc(var(--navbar-h) + var(--space-lg))' }}>
             <h3 style={{ fontSize: '1.1rem', marginBottom: 'var(--space-lg)' }}>Order Summary</h3>
 
@@ -147,5 +147,5 @@ export default function CartPage() {
   );
 }
 
-// Missing import
+
 import { useEffect } from 'react';

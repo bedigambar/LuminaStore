@@ -162,7 +162,7 @@ const products = [
   },
   {
     name: 'Smart Home Speaker',
-    description: '360-degree premium sound with built-in voice assistant. Control your smart home, stream music, set reminders, and more — all hands-free.',
+    description: '360-degree premium sound with built-in voice assistant. Control your smart home, stream music, set reminders, and more  all hands-free.',
     price: 89.99,
     comparePrice: 119.99,
     category: 'Electronics',
@@ -182,11 +182,11 @@ const seed = async () => {
 
     console.log('🌱 Seeding database...');
 
-    // Clear existing
+    
     await Product.deleteMany();
     await User.deleteMany();
 
-    // Create admin
+    
     const admin = await User.create({
       name: 'Admin User',
       email: 'admin@luminastore.com',
@@ -194,7 +194,7 @@ const seed = async () => {
       role: 'admin',
     });
 
-    // Create demo user
+    
     const user = await User.create({
       name: 'John Doe',
       email: 'john@example.com',
@@ -202,7 +202,7 @@ const seed = async () => {
       role: 'user',
     });
 
-    // Create products (skip slug auto-gen issues by setting manually)
+    
     for (const p of products) {
       await Product.create(p);
     }

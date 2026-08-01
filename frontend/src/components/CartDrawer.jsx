@@ -30,7 +30,7 @@ export default function CartDrawer() {
     <>
       <div className="drawer-overlay" onClick={() => setIsOpen(false)} />
       <div className="cart-drawer">
-        {/* Header */}
+        {}
         <div className="drawer-header">
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <ShoppingBag size={22} color="var(--primary)" />
@@ -61,7 +61,7 @@ export default function CartDrawer() {
           </div>
         </div>
 
-        {/* Body */}
+        {}
         <div className="drawer-body">
           {items.length === 0 ? (
             <div className="empty-state animate-fadeIn">
@@ -121,7 +121,7 @@ export default function CartDrawer() {
           )}
         </div>
 
-        {/* Footer */}
+        {}
         {items.length > 0 && (
           <div className="drawer-footer">
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>

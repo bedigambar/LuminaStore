@@ -39,7 +39,7 @@ export default function OrderDetailPage() {
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: 'var(--space-2xl)', alignItems: 'start' }}>
           <div>
-            {/* Status */}
+            {}
             <div className="card" style={{ marginBottom: 'var(--space-lg)' }}>
               <h3 style={{ marginBottom: 'var(--space-md)' }}>Status</h3>
               <p style={{ marginBottom: 'var(--space-sm)' }}>
@@ -51,7 +51,7 @@ export default function OrderDetailPage() {
               </div>
             </div>
 
-            {/* Items */}
+            {}
             <div className="card">
               <h3 style={{ marginBottom: 'var(--space-md)' }}>Items</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
@@ -70,7 +70,7 @@ export default function OrderDetailPage() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
-            {/* Summary */}
+            {}
             <div className="card">
               <h3 style={{ marginBottom: 'var(--space-md)' }}>Order Summary</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -82,7 +82,7 @@ export default function OrderDetailPage() {
               </div>
             </div>
 
-            {/* Shipping Info */}
+            {}
             <div className="card">
               <h3 style={{ marginBottom: 'var(--space-md)', display: 'flex', alignItems: 'center', gap: 8 }}><MapPin size={18} /> Shipping</h3>
               <p>{order.shippingAddress.name || order.user.name}</p>

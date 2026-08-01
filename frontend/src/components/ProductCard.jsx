@@ -47,7 +47,7 @@ export default function ProductCard({ product }) {
       tabIndex={0}
       onKeyDown={(e) => e.key === 'Enter' && navigate(`/products/${product._id}`)}
     >
-      {/* Image */}
+      {}
       <div className="product-img-wrap">
         <img
           src={product.images?.[0]?.url || 'https://via.placeholder.com/300'}
@@ -57,7 +57,7 @@ export default function ProductCard({ product }) {
           onError={(e) => { e.target.src = 'https://via.placeholder.com/300x300/16161f/6c63ff?text=Product'; }}
         />
 
-        {/* Badges */}
+        {}
         {product.stock === 0 && (
           <span className="out-of-stock-badge">Out of Stock</span>
         )}
@@ -75,7 +75,7 @@ export default function ProductCard({ product }) {
           </div>
         )}
 
-        {/* Hover Overlay */}
+        {}
         <div className="product-img-overlay">
           <button
             className="btn btn-primary btn-sm"
@@ -97,12 +97,12 @@ export default function ProductCard({ product }) {
         </div>
       </div>
 
-      {/* Info */}
+      {}
       <div className="product-info">
         <span className="product-category">{product.category}</span>
         <p className="product-name">{product.name}</p>
 
-        {/* Rating */}
+        {}
         {product.numReviews > 0 && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <StarRating rating={product.rating} />
@@ -112,7 +112,7 @@ export default function ProductCard({ product }) {
           </div>
         )}
 
-        {/* Price */}
+        {}
         <div className="product-price-row">
           <span className="product-price">${product.price.toFixed(2)}</span>
           {product.comparePrice > product.price && (
@@ -120,7 +120,7 @@ export default function ProductCard({ product }) {
           )}
         </div>
 
-        {/* Stock */}
+        {}
         <p style={{ fontSize: '0.75rem', color: product.stock > 5 ? 'var(--success)' : product.stock > 0 ? 'var(--warning)' : 'var(--error)' }}>
           {product.stock === 0 ? 'Out of stock' : product.stock <= 5 ? `Only ${product.stock} left!` : `In stock`}
         </p>

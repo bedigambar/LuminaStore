@@ -97,7 +97,7 @@ export default function ProductDetailPage() {
   return (
     <div className="page-content" style={{ paddingTop: 'calc(var(--navbar-h) + var(--space-2xl))' }}>
       <div className="container">
-        {/* Back */}
+        {}
         <button
           id="back-to-products-btn"
           className="btn btn-ghost btn-sm"
@@ -107,9 +107,9 @@ export default function ProductDetailPage() {
           <ArrowLeft size={16} /> Back
         </button>
 
-        {/* Product Details */}
+        {}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-3xl)', marginBottom: 'var(--space-3xl)' }}>
-          {/* Images */}
+          {}
           <div>
             <div style={{ borderRadius: 'var(--radius-xl)', overflow: 'hidden', background: 'var(--bg-elevated)', aspectRatio: '1', marginBottom: 'var(--space-md)' }}>
               <img
@@ -138,7 +138,7 @@ export default function ProductDetailPage() {
             )}
           </div>
 
-          {/* Info */}
+          {}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
             <div>
               <span className="badge badge-primary" style={{ marginBottom: 10 }}>{product.category}</span>
@@ -146,7 +146,7 @@ export default function ProductDetailPage() {
               <h1 style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)', marginBottom: 'var(--space-sm)' }}>{product.name}</h1>
             </div>
 
-            {/* Rating */}
+            {}
             {product.numReviews > 0 && (
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <StarRating rating={product.rating} />
@@ -156,7 +156,7 @@ export default function ProductDetailPage() {
               </div>
             )}
 
-            {/* Price */}
+            {}
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
               <span style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)' }}>
                 ${product.price.toFixed(2)}
@@ -177,7 +177,7 @@ export default function ProductDetailPage() {
               {product.description}
             </p>
 
-            {/* Stock */}
+            {}
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Package size={16} color={product.stock > 0 ? 'var(--success)' : 'var(--error)'} />
               <span style={{ fontSize: '0.875rem', color: product.stock > 0 ? 'var(--success)' : 'var(--error)', fontWeight: 500 }}>
@@ -185,7 +185,7 @@ export default function ProductDetailPage() {
               </span>
             </div>
 
-            {/* Qty + Add */}
+            {}
             {product.stock > 0 && (
               <div style={{ display: 'flex', gap: 'var(--space-md)', alignItems: 'center' }}>
                 <div className="qty-controls" style={{ padding: 4 }}>
@@ -208,7 +208,7 @@ export default function ProductDetailPage() {
               </div>
             )}
 
-            {/* Trust Badges */}
+            {}
             <div style={{ display: 'flex', gap: 'var(--space-lg)', flexWrap: 'wrap', marginTop: 4 }}>
               {[['🚚', 'Free shipping over $50'], ['🔒', 'Secure checkout'], ['↩️', '30-day returns']].map(([icon, text]) => (
                 <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.8rem', color: 'var(--text-muted)' }}>
@@ -219,14 +219,14 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
-        {/* Reviews */}
+        {}
         <div style={{ borderTop: '1px solid var(--border)', paddingTop: 'var(--space-2xl)' }}>
           <h2 style={{ marginBottom: 'var(--space-xl)', fontSize: '1.4rem' }}>
             Customer Reviews ({product.numReviews})
           </h2>
 
           <div style={{ display: 'grid', gridTemplateColumns: product.reviews?.length > 0 ? '1fr 340px' : '1fr', gap: 'var(--space-2xl)' }}>
-            {/* Review List */}
+            {}
             {product.reviews?.length > 0 ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
                 {product.reviews.map((r) => (
@@ -262,7 +262,7 @@ export default function ProductDetailPage() {
               </div>
             )}
 
-            {/* Write Review */}
+            {}
             {isAuthenticated ? (
               <div className="card" style={{ height: 'fit-content' }}>
                 <h3 style={{ fontSize: '1rem', marginBottom: 'var(--space-md)' }}>Write a Review</h3>

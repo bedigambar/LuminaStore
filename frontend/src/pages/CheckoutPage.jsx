@@ -13,7 +13,7 @@ import API from '../api/axios';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 
-// Load Stripe (will error gracefully if key is missing/invalid)
+
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY || '');
 
 const SHIPPING_THRESHOLD = 50;
@@ -91,7 +91,7 @@ export default function CheckoutPage() {
   const { items, totalPrice, clearCart } = useCart();
   const { user } = useAuth();
 
-  const [step, setStep] = useState(1); // 1 = Address, 2 = Payment
+  const [step, setStep] = useState(1); 
   const [shippingAddress, setShippingAddress] = useState({
     name: user?.name || '',
     street: '',
@@ -150,7 +150,7 @@ export default function CheckoutPage() {
     }
   };
 
-  // Skip Stripe if keys are missing (demo mode fallback)
+  
   const handleDemoCheckout = async () => {
     try {
       const { data } = await API.post('/orders', {
@@ -170,9 +170,9 @@ export default function CheckoutPage() {
         <h1 style={{ marginBottom: 'var(--space-2xl)', fontSize: 'clamp(1.4rem, 3vw, 2rem)' }}>Checkout</h1>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: 'var(--space-2xl)', alignItems: 'start' }}>
-          {/* Main flow */}
+          {}
           <div>
-            {/* Steps indicator */}
+            {}
             <div style={{ display: 'flex', gap: 'var(--space-md)', marginBottom: 'var(--space-xl)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: step === 1 ? 'var(--primary)' : 'var(--success)' }}>
                 <CheckCircle size={20} fill={step === 2 ? 'var(--success)' : 'none'} />
@@ -259,7 +259,7 @@ export default function CheckoutPage() {
             )}
           </div>
 
-          {/* Order Summary Sidebar */}
+          {}
           <div className="card" style={{ position: 'sticky', top: 'calc(var(--navbar-h) + var(--space-lg))' }}>
             <h3 style={{ fontSize: '1.1rem', marginBottom: 'var(--space-lg)', display: 'flex', alignItems: 'center', gap: 8 }}>
               <Package size={18} /> Order Summary

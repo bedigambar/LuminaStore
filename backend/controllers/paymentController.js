@@ -1,9 +1,9 @@
 const asyncHandler = require('express-async-handler');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-// @desc   Create Stripe payment intent
-// @route  POST /api/payment/create-intent
-// @access Private
+
+
+
 const createPaymentIntent = asyncHandler(async (req, res) => {
   const { amount, currency = 'usd' } = req.body;
 
@@ -12,7 +12,7 @@ const createPaymentIntent = asyncHandler(async (req, res) => {
     throw new Error('Invalid payment amount');
   }
 
-  // Stripe expects amount in cents
+  
   const paymentIntent = await stripe.paymentIntents.create({
     amount: Math.round(amount * 100),
     currency,

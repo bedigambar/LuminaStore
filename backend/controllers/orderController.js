@@ -7,9 +7,9 @@ const SHIPPING_THRESHOLD = 50;
 const SHIPPING_RATE = 9.99;
 const TAX_RATE = 0.08;
 
-// @desc   Place order
-// @route  POST /api/orders
-// @access Private
+
+
+
 const placeOrder = asyncHandler(async (req, res) => {
   const { shippingAddress, paymentMethod, paymentResult } = req.body;
 
@@ -20,7 +20,7 @@ const placeOrder = asyncHandler(async (req, res) => {
     throw new Error('Cart is empty');
   }
 
-  // Build order items + check stock
+  
   const orderItems = [];
   for (const item of cart.items) {
     const product = await Product.findById(item.product._id);
@@ -61,15 +61,15 @@ const placeOrder = asyncHandler(async (req, res) => {
     paidAt: paymentResult ? new Date() : undefined,
   });
 
-  // Clear cart
+  
   await Cart.findOneAndUpdate({ user: req.user._id }, { items: [] });
 
   res.status(201).json({ success: true, order });
 });
 
-// @desc   Get my orders
-// @route  GET /api/orders/mine
-// @access Private
+
+
+
 const getMyOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({ user: req.user._id })
     .sort({ createdAt: -1 })
@@ -78,9 +78,9 @@ const getMyOrders = asyncHandler(async (req, res) => {
   res.json({ success: true, orders });
 });
 
-// @desc   Get single order
-// @route  GET /api/orders/:id
-// @access Private
+
+
+
 const getOrder = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id)
     .populate('user', 'name email')
@@ -91,7 +91,7 @@ const getOrder = asyncHandler(async (req, res) => {
     throw new Error('Order not found');
   }
 
-  // Users can only see their own orders; admins can see all
+  
   if (order.user._id.toString() !== req.user._id.toString() && req.user.role !== 'admin') {
     res.status(403);
     throw new Error('Access denied');
@@ -100,9 +100,9 @@ const getOrder = asyncHandler(async (req, res) => {
   res.json({ success: true, order });
 });
 
-// @desc   Get all orders (admin)
-// @route  GET /api/orders
-// @access Admin
+
+
+
 const getAllOrders = asyncHandler(async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 20;
@@ -121,9 +121,9 @@ const getAllOrders = asyncHandler(async (req, res) => {
   res.json({ success: true, orders, page, pages: Math.ceil(total / limit), total });
 });
 
-// @desc   Update order status
-// @route  PUT /api/orders/:id/status
-// @access Admin
+
+
+
 const updateOrderStatus = asyncHandler(async (req, res) => {
   const { status, trackingNumber } = req.body;
 
@@ -140,7 +140,7 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
     order.deliveredAt = new Date();
   }
   if (status === 'cancelled') {
-    // Restore stock
+    
     for (const item of order.orderItems) {
       await Product.findByIdAndUpdate(item.product, {
         $inc: { stock: item.quantity },
@@ -152,9 +152,9 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
   res.json({ success: true, order: updated });
 });
 
-// @desc   Admin order stats
-// @route  GET /api/orders/stats
-// @access Admin
+
+
+
 const getOrderStats = asyncHandler(async (req, res) => {
   const [stats] = await Order.aggregate([
     {

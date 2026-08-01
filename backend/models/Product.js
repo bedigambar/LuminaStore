@@ -71,7 +71,7 @@ const productSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Auto-generate slug from name
+
 productSchema.pre('save', function (next) {
   if (this.isModified('name')) {
     this.slug = this.name

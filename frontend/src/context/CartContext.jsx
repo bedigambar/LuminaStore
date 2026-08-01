@@ -59,7 +59,7 @@ export const CartProvider = ({ children }) => {
     }
   );
 
-  // Persist to localStorage on change
+  
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state.items));
   }, [state.items]);
